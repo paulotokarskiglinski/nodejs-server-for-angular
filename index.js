@@ -7,7 +7,7 @@ const contentTypes = {
   'js': 'application/javascript'
 };
 
-const httpServer = http.createServer(function(req, res) {
+http.createServer(function(req, res) {
   server(req, res);
 }).listen(process.env.PORT || 5000);
 
@@ -20,7 +20,7 @@ const server = function(req, res) {
       if (err) {
         throw new Error(err);
       } else {
-        res.writeHeader(200, {'Context-Type': contentTypes[contentType]});
+        res.writeHeader(200, {'Content-Type': contentTypes[contentType]});
         res.write(content);
         res.end();
       }
@@ -30,7 +30,7 @@ const server = function(req, res) {
       if (err) {
         throw new Error(err);
       } else {
-        res.writeHeader(200, {'Context-Type': contentTypes.html});
+        res.writeHeader(200, {'Content-Type': contentTypes.html});
         res.write(html);
         res.end();
       }
